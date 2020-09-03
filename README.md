@@ -20,7 +20,7 @@ The required build dependencies are:
 ```sh
 # Checkout tag to be packaged
 git clone https://github.com/EGI-Foundation/lcg-infosites.git
-cd bdii
+cd lcg-infosites
 git checkout X.X.X
 # Building in a container
 docker run --rm -v $(pwd):/source -it centos:7
@@ -35,7 +35,7 @@ The RPM will be available into the `build/RPMS` directory.
 ```sh
 # Checkout tag to be packaged
 git clone https://github.com/EGI-Foundation/lcg-infosites.git
-cd bdii
+cd lcg-infosites
 git checkout X.X.X
 # Building in a container using the source files
 docker run --rm -v $(pwd):/source -it ubuntu:xenial
