@@ -1,6 +1,6 @@
 Name:				lcg-infosites
 Version:			3.1.0
-Release:			3%{?dist}
+Release:			4%{?dist}
 Summary:			Command line tool for the WLCG information system
 Group:				Applications/Internet
 License:			ASL 2.0
@@ -13,6 +13,8 @@ Source0:			%{name}-%{version}.tar.gz
 
 BuildRoot:			%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildArch:			noarch
+Requires:    perl-LDAP
+
 
 %description
 lcg-infosites is a simple command line tool in Perl for 
