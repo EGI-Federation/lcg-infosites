@@ -2,7 +2,7 @@ Name: lcg-infosites
 Version: 3.1.0
 Release: 3%{?dist}
 Summary: Command line tool for the WLCG information system
-Group: 	Applications/Internet
+Group: Applications/Internet
 License: ASL 2.0
 URL: https://github.com/EGI-Federation/lcg-infosites
 Source: %{name}-%{version}.tar.gz
