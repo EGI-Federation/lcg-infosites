@@ -28,6 +28,7 @@ jobs:
         run: |
           make clean rpm
       - name: Upload RPMs
+        # XXX: actions/upload-artifact > 3 does not work on centos7
         uses: actions/upload-artifact@v3
         with:
           name: rpms7
@@ -51,7 +52,7 @@ jobs:
         run: |
           make clean rpm
       - name: Upload RPMs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rpms8
           path: |
@@ -74,7 +75,7 @@ jobs:
         run: |
           make clean rpm
       - name: Upload RPMs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rpms9
           path: |
@@ -88,6 +89,7 @@ jobs:
     needs: centos7
     runs-on: ubuntu-latest
     steps:
+      # XXX: actions/download-artifact > 3 does not work on centos7
       - uses: actions/download-artifact@v3
         with:
           name: rpms7
@@ -115,7 +117,7 @@ jobs:
     needs: almalinux8
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: rpms8
       - name: Find package name
@@ -142,7 +144,7 @@ jobs:
     needs: almalinux9
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: rpms9
       - name: Find package name
