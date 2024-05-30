@@ -1,0 +1,98 @@
+---
+name: Create packages and test installation
+
+on:
+  pull_request:
+
+jobs:
+  # XXX done outside of the matrix due to different container name
+  build-centos7:
+    name: Build CentOS 7 RPMs
+    runs-on: ubuntu-latest
+    container: quay.io/centos/centos:7
+    steps:
+      # XXX: actions/checkout > 3 does not work on centos7
+      # see https://github.com/EGI-Federation/glite-info-provider-service/pull/4
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install build requisites
+        run: |
+          yum install -y rpm-build yum-utils rpmlint
+          yum-builddep -y lcg-infosites.spec
+      - name: build rpm
+        run: |
+          make clean rpm
+          rpmlint --file .rpmlint.ini build/RPMS/noarch/*.el7.noarch.rpm
+      - name: Upload RPMs
+        uses: actions/upload-artifact@v3
+        with:
+          name: rpms7
+          path: |
+            build/RPMS/noarch/lcg-infosites-*.el7.noarch.rpm
+
+  # Use a matrix for AlmaLinux versions
+  build-almalinux:
+    strategy:
+      matrix:
+        almalinux-version: [8, 9]
+    name: Build AlmaLinux ${{ matrix.almalinux-version }} RPMs
+    runs-on: ubuntu-latest
+    container: almalinux:${{ matrix.almalinux-version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install build requisites
+        run: |
+          yum install -y rpm-build yum-utils rpmlint
+          yum-builddep -y lcg-infosites.spec
+      - name: build rpm
+        run: |
+          make clean rpm
+          rpmlint --file .rpmlint.ini build/RPMS/noarch/*.el${{ matrix.almalinux-version }}.noarch.rpm
+      - name: Upload RPMs
+        uses: actions/upload-artifact@v3
+        with:
+          name: rpms${{ matrix.almalinux-version }}
+          path: |
+            build/RPMS/noarch/lcg-infosites-*.el${{ matrix.almalinux-version }}.noarch.rpm
+
+  install-centos7:
+    name: Install CentOS 7 RPMs
+    needs: build-centos7
+    runs-on: ubuntu-latest
+    container: quay.io/centos/centos:7
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: rpms7
+      - name: Install generated RPMs
+        run: |
+          yum localinstall -y lcg-infosites-*.el7.noarch.rpm
+
+  install-almalinux8:
+    name: Install AlmaLinux 8 RPMs
+    needs: build-almalinux
+    runs-on: ubuntu-latest
+    container: almalinux:8
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: rpms8
+      - name: Install generated RPMs
+        run: |
+          yum localinstall -y lcg-infosites-*.el8.noarch.rpm
+
+  install-almalinux9:
+    name: Install AlmaLinux 9 RPMs
+    needs: build-almalinux
+    runs-on: ubuntu-latest
+    container: almalinux:9
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: rpms9
+      - name: Install generated RPMs
+        run: |
+          yum localinstall -y lcg-infosites-*.el9.noarch.rpm

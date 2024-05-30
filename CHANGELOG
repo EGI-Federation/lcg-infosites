@@ -1,0 +1,19 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## Added
+- Add community files and GitHub actions. Target CentOS 7, AlmaLinux 8 and 9. (#7) (Baptiste Grenier)
+
+## [3.1.0] - 2012-04-26
+
+## Added
+
+- Improved the spec file for EPEL compliance (Laurence Field)
+- FHS compliant. (Laurence Field)
