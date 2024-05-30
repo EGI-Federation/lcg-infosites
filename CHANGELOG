@@ -10,7 +10,7 @@ and this project adheres to
 
 ## [3.2.0] - 2024-05-30
 
-## Added
+### Added
 
 - Lint PERL. (#13) (Baptiste Grenier)
 - Lint files. (#12) (Baptiste Grenier)
@@ -19,7 +19,7 @@ and this project adheres to
 
 ## [3.1.0] - 2012-04-26
 
-## Added
+### Added
 
 - Improved the spec file for EPEL compliance (Laurence Field)
 - FHS compliant. (Laurence Field)
