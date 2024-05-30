@@ -8,8 +8,14 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [3.2.0] - 2024-05-30
+
 ## Added
+
+- Lint PERL. (#13) (Baptiste Grenier)
+- Lint files. (#12) (Baptiste Grenier)
 - Add community files and GitHub actions. Target CentOS 7, AlmaLinux 8 and 9. (#7) (Baptiste Grenier)
+- Add missing EL9 dependency. (#6) (Adam Boutcher)
 
 ## [3.1.0] - 2012-04-26
 
