@@ -43,11 +43,8 @@ srpm: prepare
 rpm: srpm
 	rpmbuild --rebuild --define="dist $(dist)" --define="_topdir $(build)" $(build)/SRPMS/$(NAME)-$(VERSION)-$(RELEASE)$(dist).src.rpm
 
-deb: dist
-	cd $(build)/$(NAME)-$(VERSION); dpkg-buildpackage -us -uc; cd -
-
 clean:
 	rm -f *~ $(NAME)-$(VERSION).tar.gz
 	rm -rf $(build)
 
-.PHONY: dist srpm rpm sources deb clean
+.PHONY: dist srpm rpm sources clean
