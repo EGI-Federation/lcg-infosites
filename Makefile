@@ -14,7 +14,7 @@ install:
 	@mkdir -p $(prefix)/usr/share/doc/$(NAME)-$(VERSION)
 	@mkdir -p $(prefix)/usr/share/licenses/$(NAME)-$(VERSION)
 	@install -m 0755 src/lcg-infosites $(prefix)/usr/bin
-	@install -m 0644 man/lcg-infosites.1 $(prefix)/usr/share/man/man1/lcg-infosites.1
+	@install -m 0644 man/lcg-infosites.1 $(prefix)/usr/share/man/man1
 	@install -m 0644 README.md $(prefix)/usr/share/doc/$(NAME)-$(VERSION)/
 	@install -m 0644 AUTHORS.md $(prefix)/usr/share/doc/$(NAME)-$(VERSION)/
 	@install -m 0644 COPYRIGHT $(prefix)/usr/share/licenses/$(NAME)-$(VERSION)/
