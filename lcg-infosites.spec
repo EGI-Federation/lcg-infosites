@@ -10,6 +10,7 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-build
 BuildRequires: rsync
 BuildRequires: make
+Requires: perl-LDAP
 
 %description
 lcg-infosites is a simple command line tool in Perl for the grid information
