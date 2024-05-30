@@ -1,6 +1,6 @@
 # README for lcg-infosites package
 
-Command line tool for the grid information system.
+Command-line tool for the grid information system.
 
 BDII documentation is available at
 [gridinfo documentation site](https://gridinfo-documentation.readthedocs.io/).
