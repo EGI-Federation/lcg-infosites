@@ -25,7 +25,7 @@ jobs:
           make clean rpm
           rpmlint --file .rpmlint.ini build/RPMS/noarch/*.el7.noarch.rpm
       - name: Upload RPMs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rpms7
           path: |
@@ -52,7 +52,7 @@ jobs:
           make clean rpm
           rpmlint --file .rpmlint.ini build/RPMS/noarch/*.el${{ matrix.almalinux-version }}.noarch.rpm
       - name: Upload RPMs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rpms${{ matrix.almalinux-version }}
           path: |
