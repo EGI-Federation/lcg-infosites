@@ -22,7 +22,7 @@ use Net::LDAP;
 use Net::LDAP::Entry;
 use strict;
 
-my $version = '3.0.1';
+my $version = '3.2.0';
 
 $ENV{LANG} = $ENV{LC_ALL} = 'C';
 (my $prog = $0) =~ s-.*/--;
