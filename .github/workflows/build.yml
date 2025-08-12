@@ -13,7 +13,7 @@ jobs:
     steps:
       # XXX: actions/checkout > 3 does not work on centos7
       # see https://github.com/EGI-Federation/glite-info-provider-service/pull/4
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Install build requisites
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     container: almalinux:${{ matrix.almalinux-version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Install build requisites
